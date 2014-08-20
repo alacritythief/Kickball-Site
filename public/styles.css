@@ -27,3 +27,23 @@ ul li {
   padding: 2px 0;
   line-height: 10%;
 }
+
+a:link {
+    color: #FF6600;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #FF6600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #FF0000;
+    text-decoration: underline;
+}

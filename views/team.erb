@@ -1,0 +1,16 @@
+<h2>Team: <%= @team[0][:team] %></h2>
+
+<table>
+  <tr class="top">
+    <td>First</td>
+    <td>Last</td>
+    <td>Position</td>
+  </tr>
+  <% @team.each do |member| %>
+    <tr>
+      <td><%= member[:first_name]%></td>
+      <td><%= member[:last_name]%></td>
+      <td><%= member[:position]%></td>
+    </tr>
+  <% end %>
+</table>

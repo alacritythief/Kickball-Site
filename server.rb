@@ -11,42 +11,16 @@ def csv_import
 end
 
 def init
-  csv_import
-
-  @slammers = []
-  @jets = []
-  @stone = []
-  @goats = []
-
-  @catchers = []
-  @pitchers = []
-  @first = []
-  @second = []
-  @third = []
-  @shortstop = []
-  @left_f = []
-  @center_f = []
-  @right_f = []
-
-  @pos = []
+  @team = []
   @name = []
+  @positions = []
+  @pos = []
 
+  csv_import
+  request = params[:name]
   @teams.each do |member|
-    @slammers << member if member[:team] == 'Simpson Slammers'
-    @jets << member if member[:team] == 'Jetson Jets'
-    @stone << member if member[:team] == 'Flinestone Fire'
-    @goats << member if member[:team] == 'Griffin Goats'
-
-    @catchers << member if member[:position] == 'Catcher'
-    @pitchers << member if member[:position] == 'Pitcher'
-    @first << member if member[:position] == '1st Base'
-    @second << member if member[:position] == '2nd Base'
-    @third << member if member[:position] == '3rd Base'
-    @shortstop << member if member[:position] == 'Shortstop'
-    @left_f << member if member[:position] == 'Left Field'
-    @center_f << member if member[:position] == 'Center Field'
-    @right_f << member if member[:position] == 'Right Field'
-
+    @team << member if member[:team] == request
+    @positions << member if member[:position] == request
     @name << member[:team]
     @team_name = @name.uniq
     @pos << member[:position]
@@ -54,76 +28,17 @@ def init
   end
 end
 
-# TEAMS
-
 get '/' do
   init
   erb :index
 end
 
-get '/Simpson Slammers' do
+get '/t/:name' do
   init
-  erb :slammers
+  erb :team
 end
 
-get '/Jetson Jets' do
+get '/p/:name' do
   init
-  erb :jets
-end
-
-get '/Flinestone Fire' do
-  init
-  erb :stone
-end
-
-get '/Griffin Goats' do
-  init
-  erb :goats
-end
-
-# POSITIONS
-
-get '/Catcher' do
-  init
-  erb :catchers
-end
-
-get '/Pitcher' do
-  init
-  erb :pitchers
-end
-
-get '/1st Base' do
-  init
-  erb :first
-end
-
-get '/2nd Base' do
-  init
-  erb :second
-end
-
-get '/3rd Base' do
-  init
-  erb :third
-end
-
-get '/Shortstop' do
-  init
-  erb :shortstop
-end
-
-get '/Left Field' do
-  init
-  erb :left_f
-end
-
-get '/Center Field' do
-  init
-  erb :center_f
-end
-
-get '/Right Field' do
-  init
-  erb :right_f
+  erb :positions
 end

@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Are You Ready for some Kickball?</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
+<h1>Kickball Teams</h1>
 
-  <body>
+  <ul>
+    <% @team_name.each do |team| %>
+    <li><h2><a href="/t/<%= team %>"><%= team %></a></h2></l2>
+    <% end %>
+  </ul>
 
-  <h1>Kickball Teams</h1>
+<h1>Positions</h1>
 
-    <ul>
-      <% @team_name.each do |name| %>
-      <li><h2><a href="/<%= name %>"><%= name %></a></h2></l2>
-      <% end %>
-    </ul>
-
-  <h1>Positions</h1>
-
-    <ul>
-      <% @position.each do |name| %>
-      <li><h2><a href="/<%= name %>"><%= name %></a></h2></l2>
-      <% end %>
-    </ul>
-
-  </body>
-</html>
+  <ul>
+    <% @position.each do |position| %>
+    <li><h2><a href="/p/<%= position %>"><%= position %></a></h2></l2>
+    <% end %>
+  </ul>
